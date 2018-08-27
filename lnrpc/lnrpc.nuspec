@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>lnrpc</id>
+    <version>0.4.2</version>
+    <authors>Brett Cawley</authors>
+    <owners>Brett Cawley</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/BrettCawley/lnrpc</projectUrl>
+    <description>A gRPC library for lnd  v0.4.2 (https://github.com/lightningnetwork/lnd)</description>
+    <tags>lnd lnrpc</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Google.Api.CommonProtos" version="1.3.0" exclude="Build,Analyzers" />
+        <dependency id="Google.Protobuf" version="3.6.1" exclude="Build,Analyzers" />
+        <dependency id="Grpc.Core" version="1.14.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Readme.md" target="" />
+  </files>
+</package>
