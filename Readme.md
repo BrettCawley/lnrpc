@@ -1,14 +1,14 @@
-﻿##lnrpc
+﻿## lnrpc
 
 Source for the [lnrpc nuget package](https://www.nuget.org/packages/lnrpc/).
 
 After installing the package, usage is as follows: 
 
 
-```C#
+```c#
 string macaroonLocation = @"C:\<YOUR_LND_DIRECTORY>\data\admin.macaroon";
 string tlsCertLocation = @"C:\Users\<YOUR_USER>\AppData\Local\Lnd\tls.cert";
-string lndRPCLocation = "localhost:" + "<LND_GRPC_PORT>";
+string lndRPCLocation = "localhost:" + "<LND_GRPC_PORT>"; // default is 10009
 var lndPassword = Google.Protobuf.ByteString.CopyFromUtf8("<YOUR_LND_PASSWORD>");
 
 byte[] macaroonBytes = File.ReadAllBytes(macaroonLocation);
@@ -19,13 +19,63 @@ var sslCreds = new SslCredentials(cert);
 var channel = new Grpc.Core.Channel(lndRPCLocation, sslCreds);
 
 // unlock the lnd node using WalletUnlockerClient
-var walletClient = new Lnrpc.WalletUnlocker.WalletUnlockerClient(channel);
-var unlockRequest = new UnlockWalletRequest() { WalletPassword = lndPassword };
-var unlockResponse = walletClient.UnlockWallet(unlockRequest, new Metadata() { new Metadata.Entry("macaroon", macaroon) });
+// var walletClient = new Lnrpc.WalletUnlocker.WalletUnlockerClient(channel);
+/// var unlockRequest = new UnlockWalletRequest() { WalletPassword = lndPassword };
+/// var unlockResponse = walletClient.UnlockWallet(unlockRequest, new Metadata() { new Metadata.Entry("macaroon", macaroon) });
 
-// after unlock, call getinfo using LightningClient
+// call getinfo using LightningClient
 var lightningClient = new Lnrpc.Lightning.LightningClient(channel);
 var getinfoRequest = new GetInfoRequest();
 var getinfoResponse = lightningClient.GetInfo(getinfoRequest, new Metadata() { new Metadata.Entry("macaroon", macaroon) });
+
+
+// Response streaming example, listen for invoice received
+var invoiceReceivedRequest = new InvoiceSubscription();
+using (var call = lightningClient.SubscribeInvoices(invoiceReceivedRequest))
+{
+    while (await call.ResponseStream.MoveNext())
+    {
+        var invoice = call.ResponseStream.Current;
+        Console.WriteLine(invoice.ToString());
+    }
+}
+
+
+// bidirectional streaming, pay to a user every 2 secs
+using (var call = lightningClient.SendPayment(new Metadata() { new Metadata.Entry("macaroon", macaroon) }))
+{
+    var responseReaderTask = Task.Run(async () =>
+    {
+        while (await call.ResponseStream.MoveNext())
+        {
+            var payment = call.ResponseStream.Current;
+            Console.WriteLine(payment.ToString());
+        }
+    });
+
+    foreach (SendRequest sendRequest in SendPayment())
+    {
+        await call.RequestStream.WriteAsync(sendRequest);
+    }
+    await call.RequestStream.CompleteAsync();
+    await responseReaderTask;
+}
+
+
+IEnumerable<SendRequest> SendPayment()
+{
+    while (true)
+    {
+        SendRequest request = new SendRequest() {
+            DestString = "<DEST_PUB_KEY>",
+            Amt = 100,
+            PaymentHashString = "<R_HASH>",
+            FinalCltvDelta = "<CLTV_DELTA>"
+        };
+        yield return request;
+        System.Threading.Thread.Sleep(2000);
+    }
+}
+
 ```
 
