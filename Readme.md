@@ -77,5 +77,23 @@ IEnumerable<SendRequest> SendPayment()
     }
 }
 
+
+
+// Instead of adding macaroons to every request like we do above,
+// we can add it to a channel using interceptors. 
+Task AddMacaroon(AuthInterceptorContext context, Metadata metadata)
+{
+    metadata.Add(new Metadata.Entry("macaroon", macaroon));
+    return Task.CompletedTask;
+}
+var macaroonInterceptor = new AsyncAuthInterceptor(AddMacaroon);
+var combinedCreds = ChannelCredentials.Create(sslCreds, CallCredentials.FromInterceptor(macaroonInterceptor));
+
+var channelWithMacaroon = new Grpc.Core.Channel(lndRPCLocation, combinedCreds);
+var clientWithMacaroon = new Lnrpc.Lightning.LightningClient(channelWithMacaroon);
+
+// now every call will be made with the macaroon already included
+clientWithMacaroon.GetInfo(new GetInfoRequest())
+
 ```
 
