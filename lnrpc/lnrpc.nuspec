@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>lnrpc</id>
-    <version>0.4.2</version>
+    <version>0.5.1</version>
     <title>lnrpc</title>
     <authors>Brett Cawley</authors>
     <owners>Brett Cawley</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/BrettCawley/lnrpc</projectUrl>
-    <description>A gRPC library for lnd  v0.4.2 (https://github.com/lightningnetwork/lnd)</description>
+    <description>A gRPC library for lnd (https://github.com/lightningnetwork/lnd)</description>
     <tags>lnd lnrpc</tags>
     <dependencies>
       <group targetFramework=".NETStandard2.0">

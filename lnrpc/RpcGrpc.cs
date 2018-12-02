@@ -463,7 +463,6 @@ namespace Lnrpc {
     static readonly grpc::Marshaller<global::Lnrpc.SendManyResponse> __Marshaller_lnrpc_SendManyResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.SendManyResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.NewAddressRequest> __Marshaller_lnrpc_NewAddressRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.NewAddressRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.NewAddressResponse> __Marshaller_lnrpc_NewAddressResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.NewAddressResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Lnrpc.NewWitnessAddressRequest> __Marshaller_lnrpc_NewWitnessAddressRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.NewWitnessAddressRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.SignMessageRequest> __Marshaller_lnrpc_SignMessageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.SignMessageRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.SignMessageResponse> __Marshaller_lnrpc_SignMessageResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.SignMessageResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.VerifyMessageRequest> __Marshaller_lnrpc_VerifyMessageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.VerifyMessageRequest.Parser.ParseFrom);
@@ -487,6 +486,8 @@ namespace Lnrpc {
     static readonly grpc::Marshaller<global::Lnrpc.OpenStatusUpdate> __Marshaller_lnrpc_OpenStatusUpdate = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.OpenStatusUpdate.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.CloseChannelRequest> __Marshaller_lnrpc_CloseChannelRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.CloseChannelRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.CloseStatusUpdate> __Marshaller_lnrpc_CloseStatusUpdate = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.CloseStatusUpdate.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Lnrpc.AbandonChannelRequest> __Marshaller_lnrpc_AbandonChannelRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.AbandonChannelRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Lnrpc.AbandonChannelResponse> __Marshaller_lnrpc_AbandonChannelResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.AbandonChannelResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.SendRequest> __Marshaller_lnrpc_SendRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.SendRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.SendResponse> __Marshaller_lnrpc_SendResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.SendResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Lnrpc.SendToRouteRequest> __Marshaller_lnrpc_SendToRouteRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Lnrpc.SendToRouteRequest.Parser.ParseFrom);
@@ -574,13 +575,6 @@ namespace Lnrpc {
         __Marshaller_lnrpc_NewAddressRequest,
         __Marshaller_lnrpc_NewAddressResponse);
 
-    static readonly grpc::Method<global::Lnrpc.NewWitnessAddressRequest, global::Lnrpc.NewAddressResponse> __Method_NewWitnessAddress = new grpc::Method<global::Lnrpc.NewWitnessAddressRequest, global::Lnrpc.NewAddressResponse>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "NewWitnessAddress",
-        __Marshaller_lnrpc_NewWitnessAddressRequest,
-        __Marshaller_lnrpc_NewAddressResponse);
-
     static readonly grpc::Method<global::Lnrpc.SignMessageRequest, global::Lnrpc.SignMessageResponse> __Method_SignMessage = new grpc::Method<global::Lnrpc.SignMessageRequest, global::Lnrpc.SignMessageResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -664,6 +658,13 @@ namespace Lnrpc {
         "CloseChannel",
         __Marshaller_lnrpc_CloseChannelRequest,
         __Marshaller_lnrpc_CloseStatusUpdate);
+
+    static readonly grpc::Method<global::Lnrpc.AbandonChannelRequest, global::Lnrpc.AbandonChannelResponse> __Method_AbandonChannel = new grpc::Method<global::Lnrpc.AbandonChannelRequest, global::Lnrpc.AbandonChannelResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AbandonChannel",
+        __Marshaller_lnrpc_AbandonChannelRequest,
+        __Marshaller_lnrpc_AbandonChannelResponse);
 
     static readonly grpc::Method<global::Lnrpc.SendRequest, global::Lnrpc.SendResponse> __Method_SendPayment = new grpc::Method<global::Lnrpc.SendRequest, global::Lnrpc.SendResponse>(
         grpc::MethodType.DuplexStreaming,
@@ -927,18 +928,6 @@ namespace Lnrpc {
       }
 
       /// <summary>
-      ///*
-      ///NewWitnessAddress creates a new witness address under control of the local wallet.
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::Lnrpc.NewAddressResponse> NewWitnessAddress(global::Lnrpc.NewWitnessAddressRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
       ///* lncli: `signmessage`
       ///SignMessage signs a message with this node's private key. The returned
       ///signature string is `zbase32` encoded and pubkey recoverable, meaning that
@@ -1114,6 +1103,21 @@ namespace Lnrpc {
       }
 
       /// <summary>
+      ///* lncli: `abandonchannel`
+      ///AbandonChannel removes all channel state from the database except for a
+      ///close summary. This method can be used to get rid of permanently unusable
+      ///channels due to bugs fixed in newer versions of lnd. Only available
+      ///when in debug builds of lnd.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Lnrpc.AbandonChannelResponse> AbandonChannel(global::Lnrpc.AbandonChannelRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       ///* lncli: `sendpayment`
       ///SendPayment dispatches a bi-directional streaming RPC for sending payments
       ///through the Lightning Network. A single RPC invocation creates a persistent
@@ -1190,7 +1194,14 @@ namespace Lnrpc {
       /// <summary>
       ///* lncli: `listinvoices`
       ///ListInvoices returns a list of all the invoices currently stored within the
-      ///database. Any active debug invoices are ignored.
+      ///database. Any active debug invoices are ignored. It has full support for
+      ///paginated responses, allowing users to query for specific invoices through
+      ///their add_index. This can be done by using either the first_index_offset or
+      ///last_index_offset fields included in the response as the index_offset of the
+      ///next request. The reversed flag is set by default in order to paginate
+      ///backwards. If you wish to paginate forwards, you must explicitly set the
+      ///flag to false. If none of the parameters are specified, then the last 100
+      ///invoices will be returned.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1216,7 +1227,7 @@ namespace Lnrpc {
 
       /// <summary>
       ///*
-      ///SubscribeInvoices returns a uni-directional stream (sever -> client) for
+      ///SubscribeInvoices returns a uni-directional stream (server -> client) for
       ///notifying the client of newly added/settled invoices. The caller can
       ///optionally specify the add_index and/or the settle_index. If the add_index
       ///is specified, then we'll first start by sending add invoice events for all
@@ -1824,54 +1835,6 @@ namespace Lnrpc {
       public virtual grpc::AsyncUnaryCall<global::Lnrpc.NewAddressResponse> NewAddressAsync(global::Lnrpc.NewAddressRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_NewAddress, null, options, request);
-      }
-      /// <summary>
-      ///*
-      ///NewWitnessAddress creates a new witness address under control of the local wallet.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::Lnrpc.NewAddressResponse NewWitnessAddress(global::Lnrpc.NewWitnessAddressRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return NewWitnessAddress(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      ///*
-      ///NewWitnessAddress creates a new witness address under control of the local wallet.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::Lnrpc.NewAddressResponse NewWitnessAddress(global::Lnrpc.NewWitnessAddressRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_NewWitnessAddress, null, options, request);
-      }
-      /// <summary>
-      ///*
-      ///NewWitnessAddress creates a new witness address under control of the local wallet.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Lnrpc.NewAddressResponse> NewWitnessAddressAsync(global::Lnrpc.NewWitnessAddressRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return NewWitnessAddressAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      ///*
-      ///NewWitnessAddress creates a new witness address under control of the local wallet.
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::Lnrpc.NewAddressResponse> NewWitnessAddressAsync(global::Lnrpc.NewWitnessAddressRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_NewWitnessAddress, null, options, request);
       }
       /// <summary>
       ///* lncli: `signmessage`
@@ -2498,6 +2461,66 @@ namespace Lnrpc {
         return CallInvoker.AsyncServerStreamingCall(__Method_CloseChannel, null, options, request);
       }
       /// <summary>
+      ///* lncli: `abandonchannel`
+      ///AbandonChannel removes all channel state from the database except for a
+      ///close summary. This method can be used to get rid of permanently unusable
+      ///channels due to bugs fixed in newer versions of lnd. Only available
+      ///when in debug builds of lnd.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Lnrpc.AbandonChannelResponse AbandonChannel(global::Lnrpc.AbandonChannelRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AbandonChannel(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///* lncli: `abandonchannel`
+      ///AbandonChannel removes all channel state from the database except for a
+      ///close summary. This method can be used to get rid of permanently unusable
+      ///channels due to bugs fixed in newer versions of lnd. Only available
+      ///when in debug builds of lnd.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Lnrpc.AbandonChannelResponse AbandonChannel(global::Lnrpc.AbandonChannelRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AbandonChannel, null, options, request);
+      }
+      /// <summary>
+      ///* lncli: `abandonchannel`
+      ///AbandonChannel removes all channel state from the database except for a
+      ///close summary. This method can be used to get rid of permanently unusable
+      ///channels due to bugs fixed in newer versions of lnd. Only available
+      ///when in debug builds of lnd.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Lnrpc.AbandonChannelResponse> AbandonChannelAsync(global::Lnrpc.AbandonChannelRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AbandonChannelAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///* lncli: `abandonchannel`
+      ///AbandonChannel removes all channel state from the database except for a
+      ///close summary. This method can be used to get rid of permanently unusable
+      ///channels due to bugs fixed in newer versions of lnd. Only available
+      ///when in debug builds of lnd.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Lnrpc.AbandonChannelResponse> AbandonChannelAsync(global::Lnrpc.AbandonChannelRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AbandonChannel, null, options, request);
+      }
+      /// <summary>
       ///* lncli: `sendpayment`
       ///SendPayment dispatches a bi-directional streaming RPC for sending payments
       ///through the Lightning Network. A single RPC invocation creates a persistent
@@ -2724,7 +2747,14 @@ namespace Lnrpc {
       /// <summary>
       ///* lncli: `listinvoices`
       ///ListInvoices returns a list of all the invoices currently stored within the
-      ///database. Any active debug invoices are ignored.
+      ///database. Any active debug invoices are ignored. It has full support for
+      ///paginated responses, allowing users to query for specific invoices through
+      ///their add_index. This can be done by using either the first_index_offset or
+      ///last_index_offset fields included in the response as the index_offset of the
+      ///next request. The reversed flag is set by default in order to paginate
+      ///backwards. If you wish to paginate forwards, you must explicitly set the
+      ///flag to false. If none of the parameters are specified, then the last 100
+      ///invoices will be returned.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2738,7 +2768,14 @@ namespace Lnrpc {
       /// <summary>
       ///* lncli: `listinvoices`
       ///ListInvoices returns a list of all the invoices currently stored within the
-      ///database. Any active debug invoices are ignored.
+      ///database. Any active debug invoices are ignored. It has full support for
+      ///paginated responses, allowing users to query for specific invoices through
+      ///their add_index. This can be done by using either the first_index_offset or
+      ///last_index_offset fields included in the response as the index_offset of the
+      ///next request. The reversed flag is set by default in order to paginate
+      ///backwards. If you wish to paginate forwards, you must explicitly set the
+      ///flag to false. If none of the parameters are specified, then the last 100
+      ///invoices will be returned.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -2750,7 +2787,14 @@ namespace Lnrpc {
       /// <summary>
       ///* lncli: `listinvoices`
       ///ListInvoices returns a list of all the invoices currently stored within the
-      ///database. Any active debug invoices are ignored.
+      ///database. Any active debug invoices are ignored. It has full support for
+      ///paginated responses, allowing users to query for specific invoices through
+      ///their add_index. This can be done by using either the first_index_offset or
+      ///last_index_offset fields included in the response as the index_offset of the
+      ///next request. The reversed flag is set by default in order to paginate
+      ///backwards. If you wish to paginate forwards, you must explicitly set the
+      ///flag to false. If none of the parameters are specified, then the last 100
+      ///invoices will be returned.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2764,7 +2808,14 @@ namespace Lnrpc {
       /// <summary>
       ///* lncli: `listinvoices`
       ///ListInvoices returns a list of all the invoices currently stored within the
-      ///database. Any active debug invoices are ignored.
+      ///database. Any active debug invoices are ignored. It has full support for
+      ///paginated responses, allowing users to query for specific invoices through
+      ///their add_index. This can be done by using either the first_index_offset or
+      ///last_index_offset fields included in the response as the index_offset of the
+      ///next request. The reversed flag is set by default in order to paginate
+      ///backwards. If you wish to paginate forwards, you must explicitly set the
+      ///flag to false. If none of the parameters are specified, then the last 100
+      ///invoices will be returned.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -2831,7 +2882,7 @@ namespace Lnrpc {
       }
       /// <summary>
       ///*
-      ///SubscribeInvoices returns a uni-directional stream (sever -> client) for
+      ///SubscribeInvoices returns a uni-directional stream (server -> client) for
       ///notifying the client of newly added/settled invoices. The caller can
       ///optionally specify the add_index and/or the settle_index. If the add_index
       ///is specified, then we'll first start by sending add invoice events for all
@@ -2852,7 +2903,7 @@ namespace Lnrpc {
       }
       /// <summary>
       ///*
-      ///SubscribeInvoices returns a uni-directional stream (sever -> client) for
+      ///SubscribeInvoices returns a uni-directional stream (server -> client) for
       ///notifying the client of newly added/settled invoices. The caller can
       ///optionally specify the add_index and/or the settle_index. If the add_index
       ///is specified, then we'll first start by sending add invoice events for all
@@ -3670,7 +3721,6 @@ namespace Lnrpc {
           .AddMethod(__Method_SubscribeTransactions, serviceImpl.SubscribeTransactions)
           .AddMethod(__Method_SendMany, serviceImpl.SendMany)
           .AddMethod(__Method_NewAddress, serviceImpl.NewAddress)
-          .AddMethod(__Method_NewWitnessAddress, serviceImpl.NewWitnessAddress)
           .AddMethod(__Method_SignMessage, serviceImpl.SignMessage)
           .AddMethod(__Method_VerifyMessage, serviceImpl.VerifyMessage)
           .AddMethod(__Method_ConnectPeer, serviceImpl.ConnectPeer)
@@ -3683,6 +3733,7 @@ namespace Lnrpc {
           .AddMethod(__Method_OpenChannelSync, serviceImpl.OpenChannelSync)
           .AddMethod(__Method_OpenChannel, serviceImpl.OpenChannel)
           .AddMethod(__Method_CloseChannel, serviceImpl.CloseChannel)
+          .AddMethod(__Method_AbandonChannel, serviceImpl.AbandonChannel)
           .AddMethod(__Method_SendPayment, serviceImpl.SendPayment)
           .AddMethod(__Method_SendPaymentSync, serviceImpl.SendPaymentSync)
           .AddMethod(__Method_SendToRoute, serviceImpl.SendToRoute)

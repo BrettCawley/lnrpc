@@ -6,7 +6,7 @@ After installing the package, usage is as follows:
 
 
 ```c#
-string macaroonLocation = @"C:\<YOUR_LND_DIRECTORY>\data\admin.macaroon";
+string macaroonLocation = @"C:\<YOUR_LND_DIRECTORY>\data\chain\bitcoin\simnet\admin.macaroon";
 string tlsCertLocation = @"C:\Users\<YOUR_USER>\AppData\Local\Lnd\tls.cert";
 string lndRPCLocation = "localhost:" + "<LND_GRPC_PORT>"; // default is 10009
 var lndPassword = Google.Protobuf.ByteString.CopyFromUtf8("<YOUR_LND_PASSWORD>");
@@ -70,7 +70,7 @@ IEnumerable<SendRequest> SendPayment()
             DestString = "<DEST_PUB_KEY>",
             Amt = 100,
             PaymentHashString = "<R_HASH>",
-            FinalCltvDelta = "<CLTV_DELTA>"
+            FinalCltvDelta = <CLTV_DELTA>
         };
         yield return request;
         System.Threading.Thread.Sleep(2000);
